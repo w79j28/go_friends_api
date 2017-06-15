@@ -2,7 +2,9 @@
 package dao
 
 import (
+	//	"strings"
 	//	"fmt"
+	"bytes"
 	"log"
 
 	_ "github.com/lib/pq"
@@ -67,6 +69,7 @@ func SyncTable() {
 	err := engine.Sync2(new(entity.User), new(entity.Friends), new(entity.Permission))
 
 	CheckError(err)
-	engine.ImportFile("./conf/db.sql")
+	//	engine.ImportFile("./conf/db.sql")
+	engine.Import(bytes.NewReader(MustAsset("db.sql")))
 
 }
