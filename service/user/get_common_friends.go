@@ -32,6 +32,12 @@ func GetCommonFriends(c *gin.Context) {
 			return
 		}
 
+		defer func() {
+			if info := recover(); info != nil {
+				c.JSON(http.StatusBadRequest, FAILED)
+				return
+			}
+		}()
 		userDao := dao.VFriendDaoImpl{}
 		userList := userDao.QueryByEmail(json.Friends[0], json.Friends[1])
 		user1List, user2List := list.New(), list.New()

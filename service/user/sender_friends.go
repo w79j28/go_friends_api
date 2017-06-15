@@ -27,6 +27,12 @@ func SenderFriends(c *gin.Context) {
 
 	result := c.BindJSON(&json)
 	if result == nil {
+		defer func() {
+			if info := recover(); info != nil {
+				c.JSON(http.StatusBadRequest, FAILED)
+				return
+			}
+		}()
 		vFriendDao := dao.VFriendDaoImpl{}
 		vPermissionDao := dao.VPermissionDaoImpl{}
 
