@@ -42,6 +42,10 @@ func AddFriend(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, FAILED)
 			return
 		}
+		if json.Friends[0] == json.Friends[1] {
+			c.JSON(http.StatusBadRequest, FAILED)
+			return
+		}
 
 		userDao := dao.UserDaoImpl{}
 		var userId []int64
