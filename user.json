@@ -1,7 +1,7 @@
 {
     "apiVersion": "1.0.0",
     "swaggerVersion": "1.2",
-    "basePath": "https://w79j28.github.io/go_friends_api/",
+    "basePath": "https://w79j28.github.io/go_friends_api",
     "resourcePath": "/user",
     "produces": [
         "application/json"
