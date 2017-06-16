@@ -12,6 +12,19 @@ on the application's use case.
 Usually, applications would start with features like "Friend", "Unfriend", "Block", "Receive
 Updates" etc.
 
+## 项目说明
+* [Swagger Declarative Comments Format](https://github.com/yvasiyarov/swagger/wiki/Declarative-Comments-Format)
+* swagger/main.go 生成Swagger文档
+* 配置文件config/app_config.ini,首次运行时创建或自行创建
+  `app_config.ini`
+```ini
+  dburl            = postgres://user:password@ip:port/dbname?sslmode=disable
+  port             = port
+  swagger_basepath = http://ip:port
+```   
+
+
+
 ## API说明
 
 [https://w79j28.github.io/go_friends_api](https://w79j28.github.io/go_friends_api/#!/user.json)
