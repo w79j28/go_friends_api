@@ -1,7 +1,7 @@
 
 
 ## 开发框架说明
-* Go、[xorm](http://www.xorm.io)、[SwaggerUI](https://w79j28.github.io/go_friends_api)
+* Go、[gin](https://github.com/gin-gonic/gin)、[xorm](http://www.xorm.io)、[SwaggerUI](https://w79j28.github.io/go_friends_api)
 * PostgreSql
 
 
