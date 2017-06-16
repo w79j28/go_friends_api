@@ -13,15 +13,18 @@ Usually, applications would start with features like "Friend", "Unfriend", "Bloc
 Updates" etc.
 
 ## 项目说明
-* [Swagger Declarative Comments Format](https://github.com/yvasiyarov/swagger/wiki/Declarative-Comments-Format)
+* [Swagger 注释说明](https://github.com/yvasiyarov/swagger/wiki/Declarative-Comments-Format)
 * swagger/main.go 生成Swagger文档
 * 配置文件config/app_config.ini,首次运行时创建或自行创建
  
  `app_config.ini`
 ```ini
-  dburl            = postgres://user:password@ip:port/dbname?sslmode=disable
-  port             = port
-  swagger_basepath = http://ip:port
+  #数据库连接
+  dburl            = postgres://user:password@ip:port/dbname?sslmode=disable
+  #端口
+  port             = port
+  #Swagger Basepath
+  swagger_basepath = http://ip:port
 ```   
 
 
