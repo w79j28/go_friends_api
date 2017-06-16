@@ -27,7 +27,7 @@ Updates" etc.
   swagger_basepath = http://ip:port
 ```   
 
-运行后 Swagger UI 地址：http://ip:port/swagger-ui/
+* 运行后 Swagger UI 地址：http://ip:port/swagger-ui/
 
  如：[http://localhost:9090/swagger-ui/](http://localhost:9090/swagger-ui/)
 
