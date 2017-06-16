@@ -18,7 +18,7 @@ Updates" etc.
 * 配置文件config/app_config.ini,首次运行时创建或自行创建
  
  `app_config.ini`
-```javascript
+```java
   #数据库连接
   dburl            = postgres://user:password@ip:port/dbname?sslmode=disable
   #端口
