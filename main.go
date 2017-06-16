@@ -11,9 +11,7 @@ package main
 import (
 	"fmt"
 	"strings"
-	//	"fmt"
 	"net/http"
-	//	"strings"
 
 	"github.com/w79j28/go_friends_api/conf"
 	. "github.com/w79j28/go_friends_api/service/user"
