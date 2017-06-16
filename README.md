@@ -127,9 +127,9 @@ That "subscribing to updates" is NOT equivalent to "adding a friend connection".
 *Eligibility for receiving updates from i.e. "john@example.com":*
 * has not blocked updates from "john@example.com", and
 * at least one of the following:
-    *has a friend connection with "john@example.com"
-    *has subscribed to updates from "john@example.com"
-    *has been @mentioned in the update
+    * has a friend connection with "john@example.com"
+    * has subscribed to updates from "john@example.com"
+    * has been @mentioned in the update
 
 *JSON request:*
 ```json
