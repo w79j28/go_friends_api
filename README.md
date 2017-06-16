@@ -19,11 +19,11 @@ Updates" etc.
  
  `app_config.ini`
 ```ini
-  #数据库连接
+  \#数据库连接
   dburl            = postgres://user:password@ip:port/dbname?sslmode=disable
-  #端口
+  \#端口
   port             = port
-  #Swagger Basepath
+  \#Swagger Basepath
   swagger_basepath = http://ip:port
 ```   
 
