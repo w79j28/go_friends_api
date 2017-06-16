@@ -141,7 +141,7 @@ That "subscribing to updates" is NOT equivalent to "adding a friend connection".
 *JSON response on success:*
 ```json
   {
-     "success": true
+     "success": true,
      "recipients" : [
         "lisa@example.com",
         "kate@example.com"
