@@ -33,7 +33,7 @@ Updates" etc.
 
 [https://w79j28.github.io/go_friends_api](https://w79j28.github.io/go_friends_api/#!/user.json)
 
-#### 1 /usr/friends    [`POST`] 
+#### 1 /user/friends    [`POST`] 
 
 *Create a friend connection between two email addresses.*
 
@@ -53,7 +53,7 @@ Updates" etc.
   }
 ```  
 
-#### 2 /usr/friends/list    [`POST`] 
+#### 2 /user/friends/list    [`POST`] 
 
 *Retrieve the friends list for an email address.*
 
