@@ -8,9 +8,9 @@ import (
 )
 
 /**数据库连接URL**/
-const DefaultPostgreUrl = "postgres://casemgmt:casemgmt@192.168.10.198:9432/GoApiTest?sslmode=disable"
+const DefaultPostgreUrl = "postgres://user:pwd@localhost/goapitest?sslmode=disable"
 const DefaultPort = "9090"
-const DefaultSwaggerBasepath = "http://192.168.10.198:9090"
+const DefaultSwaggerBasepath = "http://localhost:9090"
 
 var AppConf Config
 
