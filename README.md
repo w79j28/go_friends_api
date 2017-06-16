@@ -14,7 +14,7 @@ Updates" etc.
 
 ## API说明
 
-[link](https://w79j28.github.io/go_friends_api/#!/user.json)
+[https://w79j28.github.io/go_friends_api](https://w79j28.github.io/go_friends_api/#!/user.json)
 
 #### 1 /usr/friends    [`POST`] 
 
