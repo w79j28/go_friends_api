@@ -1,6 +1,6 @@
 
 ## 在线访问地址
-  [Friends Management](https://wangjingzhu.run.aws-jp01-pr.ice.predix.io/swagger-ui/)
+  [Friends Management](https://wangjingzhu.run.aws-jp01-pr.ice.predix.io/swagger-ui/#!/user)
 
 ## 开发框架说明
 * Go、[gin](https://github.com/gin-gonic/gin)、[xorm](http://www.xorm.io)、[SwaggerUI](https://wangjingzhu.run.aws-jp01-pr.ice.predix.io/swagger-ui/)
@@ -35,7 +35,7 @@ Updates" etc.
 
 ## API说明
 
-[https://wangjingzhu.run.aws-jp01-pr.ice.predix.io/swagger-ui/](https://wangjingzhu.run.aws-jp01-pr.ice.predix.io/swagger-ui/#!/user.json)
+[https://wangjingzhu.run.aws-jp01-pr.ice.predix.io/swagger-ui/](https://wangjingzhu.run.aws-jp01-pr.ice.predix.io/swagger-ui/#!/user)
 
 #### 1 /user/friends    [`POST`] 
 
