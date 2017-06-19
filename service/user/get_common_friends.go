@@ -57,7 +57,7 @@ func GetCommonFriends(c *gin.Context) {
 			}
 
 		}
-		var commons []string
+		var commons = []string{}
 		for e := user1List.Front(); e != nil; e = e.Next() {
 			for e2 := user2List.Front(); e2 != nil; e2 = e2.Next() {
 				if e.Value == e2.Value {
