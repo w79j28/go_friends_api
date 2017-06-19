@@ -2,7 +2,7 @@
 package docs
 //This file is generated automatically. Do not try to edit it manually.
 func init() {
- ResourceListingJson = `{
+ ResourceListingJSON = `{
     "apiVersion": "1.0.0",
     "swaggerVersion": "1.2",
     "basePath": "{{basePath}}",
@@ -21,7 +21,7 @@ func init() {
         "licenseUrl": "#"
     }
 }`
- ApiDescriptionsJson = map[string]string{"user":`{
+ APIDescriptionsJSON = map[string]string{"user":`{
     "apiVersion": "1.0.0",
     "swaggerVersion": "1.2",
     "basePath": "{{basePath}}",

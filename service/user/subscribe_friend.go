@@ -4,8 +4,8 @@ package user
 import (
 	"net/http"
 
-	. "github.com/w79j28/go_friends_api/api/input"
-	. "github.com/w79j28/go_friends_api/api/output"
+	"github.com/w79j28/go_friends_api/api/input"
+	"github.com/w79j28/go_friends_api/api/output"
 	"github.com/w79j28/go_friends_api/dao"
 	"github.com/w79j28/go_friends_api/entity"
 
@@ -24,16 +24,16 @@ const SUBSCRIBE int = 1
 // @Router /user/friend/subscribe [post]
 // @Resource /user
 func SubscribeFriend(c *gin.Context) {
-	var json SubscribeInput
+	var json input.SubscribeInput
 	result := c.BindJSON(&json)
 	if result == nil {
 		if json.Requestor == json.Target {
-			c.JSON(http.StatusBadRequest, FAILED)
+			c.JSON(http.StatusBadRequest, output.FAILED)
 			return
 		}
 		session := dao.NewSessionBegin()
 		defer dao.SessionDeferFunc(session, func() {
-			c.JSON(http.StatusBadRequest, FAILED)
+			c.JSON(http.StatusBadRequest, output.FAILED)
 		})
 		userDao := dao.UserDaoImpl{}
 		requestorUser := userDao.QueryByEmail(json.Requestor)
@@ -63,8 +63,8 @@ func SubscribeFriend(c *gin.Context) {
 		if thisPermission == nil {
 			permissionDao.AddBySession(session, &entity)
 		}
-		c.JSON(http.StatusCreated, SUCCESS)
+		c.JSON(http.StatusCreated, output.SUCCESS)
 	} else {
-		c.JSON(http.StatusBadRequest, FAILED)
+		c.JSON(http.StatusBadRequest, output.FAILED)
 	}
 }

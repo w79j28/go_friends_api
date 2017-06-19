@@ -2,8 +2,8 @@
 package user
 
 import (
-	. "github.com/w79j28/go_friends_api/api/input"
-	. "github.com/w79j28/go_friends_api/api/output"
+	"github.com/w79j28/go_friends_api/api/input"
+	"github.com/w79j28/go_friends_api/api/output"
 	"github.com/w79j28/go_friends_api/dao"
 
 	"net/http"
@@ -26,24 +26,16 @@ import (
 // @Resource /user
 func AddFriend(c *gin.Context) {
 
-	//name := c.Param("name")
-	//c.String(http.StatusOK, "Hello %s", name)
-	//c.JSON(200, gin.H{"name": name})
-	//	var userInfo LoginForm
-	//	userInfo.User = name
-	//	userInfo.Password = name + "password"
-	//	c.JSON(200, userInfo)
-	//	fmt.Println("add friend....")
-	var json FriendInput
+	var json input.FriendInput
 	result := c.BindJSON(&json)
 	if result == nil {
 		intLen := len(json.Friends)
 		if intLen != 2 {
-			c.JSON(http.StatusBadRequest, FAILED)
+			c.JSON(http.StatusBadRequest, output.FAILED)
 			return
 		}
 		if json.Friends[0] == json.Friends[1] {
-			c.JSON(http.StatusBadRequest, FAILED)
+			c.JSON(http.StatusBadRequest, output.FAILED)
 			return
 		}
 
@@ -52,7 +44,7 @@ func AddFriend(c *gin.Context) {
 		var notExistUserCount int
 		session := dao.NewSessionBegin()
 		defer dao.SessionDeferFunc(session, func() {
-			c.JSON(http.StatusBadRequest, FAILED)
+			c.JSON(http.StatusBadRequest, output.FAILED)
 		})
 
 		for _, thisEmail := range json.Friends {
@@ -82,7 +74,7 @@ func AddFriend(c *gin.Context) {
 
 		}
 		if user0HashSet.Contains(json.Friends[1]) || user1HashSet.Contains(json.Friends[0]) {
-			c.JSON(http.StatusBadRequest, FAILED)
+			c.JSON(http.StatusBadRequest, output.FAILED)
 			return
 		}
 
@@ -91,13 +83,13 @@ func AddFriend(c *gin.Context) {
 		friend.Userid1 = userId[0]
 		friend.Userid2 = userId[1]
 		friendDao := dao.FriendDaoImpl{}
-		if friendDao.QueryById(friend) == nil {
+		if friendDao.QueryByID(friend) == nil {
 			friendDao.AddBySession(session, friend)
 		}
 
-		c.JSON(http.StatusCreated, SUCCESS)
+		c.JSON(http.StatusCreated, output.SUCCESS)
 	} else {
 		//		fmt.Println("failed:", result)
-		c.JSON(http.StatusBadRequest, FAILED)
+		c.JSON(http.StatusBadRequest, output.FAILED)
 	}
 }

@@ -1,9 +1,6 @@
-// conn
 package dao
 
 import (
-	//	"strings"
-	//	"fmt"
 	"bytes"
 	"log"
 
@@ -29,29 +26,27 @@ func init() {
 	SyncTable()
 }
 
+// NewSessionBegin new session begin
 func NewSessionBegin() *xorm.Session {
 	session := engine.NewSession()
 	session.Begin()
 	return session
 }
 
+//SessionDeferFunc defer function
 func SessionDeferFunc(session *xorm.Session, failedFunc func()) {
 	if info := recover(); info != nil {
 		session.Rollback()
 		session.Close()
 		failedFunc()
 		return
-	} else {
-		session.Commit()
-		session.Close()
 	}
+	session.Commit()
+	session.Close()
 
 }
 
-/**
- * 初始化
- *
- */
+// DbInit init database
 func DbInit() {
 	engine, err = xorm.NewPostgreSQL(conf.AppConf.Dburl)
 	CheckError(err)
@@ -61,10 +56,7 @@ func DbInit() {
 	engine.ShowSQL(true)
 }
 
-/**
- *同步表
- *
- */
+// SyncTable 同步表
 func SyncTable() {
 	err := engine.Sync2(new(entity.User), new(entity.Friends), new(entity.Permission))
 

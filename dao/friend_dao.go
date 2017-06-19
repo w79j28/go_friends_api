@@ -1,44 +1,41 @@
-// dao
 package dao
 
 import (
 	"container/list"
 
 	"github.com/w79j28/go_friends_api/entity"
-	. "github.com/xormplus/xorm"
+	"github.com/xormplus/xorm"
 )
 
-type FriendDao interface {
-	Add(user *entity.Friends) int64
-	Query() []*entity.Friends
-	Update(entity *entity.Friends) int64
-	Delete(entity *entity.Friends) int64
-}
-
+//FriendDaoImpl FriendDao struct
 type FriendDaoImpl struct{}
 
+//Add add friend
 func (u *FriendDaoImpl) Add(entity *entity.Friends) int64 {
 	id, err := engine.Insert(entity)
 	CheckError(err)
 	return id
 }
 
-func (u *FriendDaoImpl) AddBySession(session *Session, entity *entity.Friends) int64 {
+// AddBySession addBySession
+func (u *FriendDaoImpl) AddBySession(session *xorm.Session, entity *entity.Friends) int64 {
 	id, err := session.Insert(entity)
 	CheckError(err)
 	return id
 }
 
-func (u *FriendDaoImpl) QueryById(entity *entity.Friends) *entity.Friends {
+// QueryByID query by id
+func (u *FriendDaoImpl) QueryByID(entity *entity.Friends) *entity.Friends {
 	rs, _ := engine.Get(entity)
 	//CheckError(err)
 	if rs {
 		return entity
-	} else {
-		return nil
 	}
+	return nil
+
 }
 
+// Query query
 func (u *FriendDaoImpl) Query() []*entity.Friends {
 	list := list.New()
 	user := new(entity.Friends)
@@ -52,11 +49,11 @@ func (u *FriendDaoImpl) Query() []*entity.Friends {
 
 	}
 
-	var users []*entity.Friends = make([]*entity.Friends, list.Len())
+	var users = make([]*entity.Friends, list.Len())
 
 	i := 0
 	for e := list.Front(); e != nil; e = e.Next() {
-		var uu *entity.Friends = e.Value.(*entity.Friends)
+		var uu = e.Value.(*entity.Friends)
 
 		users[i] = uu
 		i++
@@ -64,6 +61,7 @@ func (u *FriendDaoImpl) Query() []*entity.Friends {
 	return users
 }
 
+// Update update
 func (u *FriendDaoImpl) Update(user *entity.Friends) int64 {
 	//.
 	//	affected, err := engine.Id(user.Id).Update(user)
@@ -72,6 +70,7 @@ func (u *FriendDaoImpl) Update(user *entity.Friends) int64 {
 	return 0
 }
 
+// Delete delete
 func (u *FriendDaoImpl) Delete(entity *entity.Friends) int64 {
 
 	//	user := new(entity.Friends)

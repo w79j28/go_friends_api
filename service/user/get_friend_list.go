@@ -4,8 +4,8 @@ package user
 import (
 	"container/list"
 
-	. "github.com/w79j28/go_friends_api/api/input"
-	. "github.com/w79j28/go_friends_api/api/output"
+	"github.com/w79j28/go_friends_api/api/input"
+	"github.com/w79j28/go_friends_api/api/output"
 	"github.com/w79j28/go_friends_api/dao"
 
 	"net/http"
@@ -23,20 +23,20 @@ import (
 // @Router /user/friend/list [post]
 // @Resource /user
 func GetFriendList(c *gin.Context) {
-	var json EmailInput
+	var json input.EmailInput
 	result := c.BindJSON(&json)
 
 	if result == nil {
 		defer func() {
 			if info := recover(); info != nil {
-				c.JSON(http.StatusBadRequest, FAILED)
+				c.JSON(http.StatusBadRequest, output.FAILED)
 				return
 			}
 		}()
 		vFriendDao := dao.VFriendDaoImpl{}
 		userList := vFriendDao.Query(json.Email)
 
-		var output FriendListOutput
+		var output output.FriendListOutput
 		output.Success = true
 
 		var friends []string
@@ -73,5 +73,5 @@ func GetFriendList(c *gin.Context) {
 		}
 
 	}
-	c.JSON(http.StatusBadRequest, FAILED)
+	c.JSON(http.StatusBadRequest, output.FAILED)
 }

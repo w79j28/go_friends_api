@@ -1,5 +1,6 @@
 package output
 
+//FriendListOutput output
 type FriendListOutput struct {
 	Output
 	Friends []string `json:"friends"`

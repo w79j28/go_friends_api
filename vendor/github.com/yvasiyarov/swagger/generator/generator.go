@@ -25,8 +25,8 @@ var generatedFileTemplate = `
 package docs
 //This file is generated automatically. Do not try to edit it manually.
 func init() {
- ResourceListingJson = {{resourceListing}}
- ApiDescriptionsJson = {{apiDescriptions}}
+ ResourceListingJSON = {{resourceListing}}
+ APIDescriptionsJSON = {{apiDescriptions}}
 }
 `
 

@@ -7,8 +7,8 @@ import (
 	"github.com/w79j28/go_friends_api/dao"
 	"github.com/w79j28/go_friends_api/util"
 
-	. "github.com/w79j28/go_friends_api/api/input"
-	. "github.com/w79j28/go_friends_api/api/output"
+	"github.com/w79j28/go_friends_api/api/input"
+	"github.com/w79j28/go_friends_api/api/output"
 
 	"github.com/gin-gonic/gin"
 )
@@ -23,13 +23,13 @@ import (
 // @Router /user/friends/sender [post]
 // @Resource /user
 func SenderFriends(c *gin.Context) {
-	var json SenderInput
+	var json input.SenderInput
 
 	result := c.BindJSON(&json)
 	if result == nil {
 		defer func() {
 			if info := recover(); info != nil {
-				c.JSON(http.StatusBadRequest, FAILED)
+				c.JSON(http.StatusBadRequest, output.FAILED)
 				return
 			}
 		}()
@@ -58,19 +58,19 @@ func SenderFriends(c *gin.Context) {
 				userHashSet.Remove(thisPermission.Requestoremail)
 			}
 		}
-		var recipientList []string = []string{}
+		var recipientList = []string{}
 		for _, element := range userHashSet.Elements() {
 			if element.(string) != json.Sender {
 				recipientList = append(recipientList, element.(string))
 			}
 		}
 
-		output := RecipientsOutput{}
+		output := output.RecipientsOutput{}
 		output.Success = true
 		output.Recipients = recipientList
 		c.JSON(http.StatusOK, output)
 	} else {
 
-		c.JSON(http.StatusBadRequest, FAILED)
+		c.JSON(http.StatusBadRequest, output.FAILED)
 	}
 }

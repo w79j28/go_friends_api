@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"net/http"
 
-	. "github.com/w79j28/go_friends_api/api/input"
-	. "github.com/w79j28/go_friends_api/api/output"
+	"github.com/w79j28/go_friends_api/api/input"
+	"github.com/w79j28/go_friends_api/api/output"
 	"github.com/w79j28/go_friends_api/dao"
 
 	"github.com/gin-gonic/gin"
@@ -23,18 +23,18 @@ import (
 // @Router /user/friends/common [post]
 // @Resource /user
 func GetCommonFriends(c *gin.Context) {
-	var json FriendInput
+	var json input.FriendInput
 	result := c.BindJSON(&json)
 	if result == nil {
 		intLen := len(json.Friends)
 		if intLen != 2 {
-			c.JSON(http.StatusBadRequest, FAILED)
+			c.JSON(http.StatusBadRequest, output.FAILED)
 			return
 		}
 
 		defer func() {
 			if info := recover(); info != nil {
-				c.JSON(http.StatusBadRequest, FAILED)
+				c.JSON(http.StatusBadRequest, output.FAILED)
 				return
 			}
 		}()
@@ -66,13 +66,13 @@ func GetCommonFriends(c *gin.Context) {
 			}
 		}
 
-		var output FriendListOutput
+		var output output.FriendListOutput
 		output.Success = true
 		output.Count = len(commons)
 		output.Friends = commons
 		c.JSON(http.StatusOK, output)
 	} else {
 		fmt.Println("failed:", result)
-		c.JSON(http.StatusBadRequest, FAILED)
+		c.JSON(http.StatusBadRequest, output.FAILED)
 	}
 }

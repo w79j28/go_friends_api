@@ -1,5 +1,6 @@
 package entity
 
+// VPermission view field
 type VPermission struct {
 	Requestor      int64
 	Requestoremail string

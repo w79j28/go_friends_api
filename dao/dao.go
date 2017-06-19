@@ -4,10 +4,7 @@ import (
 	"log"
 )
 
-/**
- * 错误检测
- *
- */
+// CheckError check error
 func CheckError(err error) {
 	if err != nil {
 		log.Println(err)

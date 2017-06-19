@@ -4,8 +4,8 @@ package user
 import (
 	"github.com/w79j28/go_friends_api/dao"
 
-	. "github.com/w79j28/go_friends_api/api/input"
-	. "github.com/w79j28/go_friends_api/api/output"
+	"github.com/w79j28/go_friends_api/api/input"
+	"github.com/w79j28/go_friends_api/api/output"
 
 	"net/http"
 
@@ -26,11 +26,11 @@ const BLOCK int = 2
 // @Router /user/friend/block [post]
 // @Resource /user
 func BlockFriend(c *gin.Context) {
-	var json BlockInput
+	var json input.BlockInput
 	result := c.BindJSON(&json)
 	if result == nil {
 		if json.Requestor == json.Target {
-			c.JSON(http.StatusBadRequest, FAILED)
+			c.JSON(http.StatusBadRequest, output.FAILED)
 			return
 		}
 		userDao := dao.UserDaoImpl{}
@@ -38,7 +38,7 @@ func BlockFriend(c *gin.Context) {
 
 		session := dao.NewSessionBegin()
 		defer dao.SessionDeferFunc(session, func() {
-			c.JSON(http.StatusBadRequest, FAILED)
+			c.JSON(http.StatusBadRequest, output.FAILED)
 		})
 		if requestorUser == nil {
 			// Requestor 不存在
@@ -66,8 +66,8 @@ func BlockFriend(c *gin.Context) {
 		if thisPermission == nil {
 			permissionDao.AddBySession(session, &entity)
 		}
-		c.JSON(http.StatusCreated, SUCCESS)
+		c.JSON(http.StatusCreated, output.SUCCESS)
 	} else {
-		c.JSON(http.StatusBadRequest, FAILED)
+		c.JSON(http.StatusBadRequest, output.FAILED)
 	}
 }

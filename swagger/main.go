@@ -5,21 +5,21 @@ import (
 )
 
 func main() {
-	var apiPackage string = "github.com\\w79j28\\go_friends_api\\service"
+	var apiPackage = "github.com\\w79j28\\go_friends_api\\service"
 	var basePackage = "github.com/w79j28/go_friends_api"
-	var mainApiFile string = "github.com/w79j28/go_friends_api/main.go"
-	var outputFormat string = "go"
-	var outputSpec string = "../swagger.docs"
-	var controllerClass string = ""
-	var ignore string = "^$"
-	var contentsTable bool = true
-	var models bool = false
-	var vendoringPath string = "github.com/w79j28/go_friends_api/vendor"
+	var mainAPIFile = "github.com/w79j28/go_friends_api/main.go"
+	var outputFormat = "go"
+	var outputSpec = "../swagger.docs"
+	var controllerClass = ""
+	var ignore = "^$"
+	var contentsTable = true
+	var models = false
+	var vendoringPath = "github.com/w79j28/go_friends_api/vendor"
 
 	params := generator.Params{
 		ApiPackage:      apiPackage,
 		BasePackage:     basePackage,
-		MainApiFile:     mainApiFile,
+		MainApiFile:     mainAPIFile,
 		OutputFormat:    outputFormat,
 		OutputSpec:      outputSpec,
 		ControllerClass: controllerClass,

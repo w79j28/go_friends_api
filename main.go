@@ -14,12 +14,12 @@ import (
 	"strings"
 
 	"github.com/w79j28/go_friends_api/conf"
-	. "github.com/w79j28/go_friends_api/service/user"
+	"github.com/w79j28/go_friends_api/service/user"
 
 	"os"
 
 	"github.com/gin-gonic/gin"
-	. "github.com/w79j28/go_friends_api/swagger.docs"
+	"github.com/w79j28/go_friends_api/swagger.docs"
 )
 
 func main() {
@@ -30,20 +30,20 @@ func main() {
 	})
 	router.Use(corsHandler)
 
-	user := router.Group("/user")
+	userRouter := router.Group("/user")
 	{
 
-		user.POST("/friends", AddFriend)
-		user.POST("/friend/list", GetFriendList)
-		user.POST("/friends/common", GetCommonFriends)
-		user.POST("/friend/subscribe", SubscribeFriend)
-		user.POST("/friend/block", BlockFriend)
-		user.POST("/friends/sender", SenderFriends)
+		userRouter.POST("/friends", user.AddFriend)
+		userRouter.POST("/friend/list", user.GetFriendList)
+		userRouter.POST("/friends/common", user.GetCommonFriends)
+		userRouter.POST("/friend/subscribe", user.SubscribeFriend)
+		userRouter.POST("/friend/block", user.BlockFriend)
+		userRouter.POST("/friends/sender", user.SenderFriends)
 
 	}
 
 	//
-	InitSwagger(router)
+	docs.InitSwagger(router)
 	if conf.AppConf.Port == "cloud" {
 		router.Run(":" + os.Getenv("PORT"))
 	} else {

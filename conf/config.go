@@ -7,13 +7,19 @@ import (
 	"github.com/go-ini/ini"
 )
 
-/**数据库连接URL**/
-const DefaultPostgreUrl = "postgres://user:pwd@localhost/goapitest?sslmode=disable"
+// DefaultPostgreURL default url
+const DefaultPostgreURL = "postgres://user:pwd@localhost/goapitest?sslmode=disable"
+
+//DefaultPort default port
 const DefaultPort = "9090"
+
+//DefaultSwaggerBasepath swagger base path
 const DefaultSwaggerBasepath = "http://localhost:9090"
 
+// AppConf config info
 var AppConf Config
 
+// Config config struct
 type Config struct {
 	Dburl           string `ini:"dburl"`
 	Port            string `ini:"port"`
@@ -35,7 +41,7 @@ func init() {
 	if err != nil {
 		iniFile := ini.Empty()
 		conf := new(Config)
-		conf.Dburl = DefaultPostgreUrl
+		conf.Dburl = DefaultPostgreURL
 		conf.Port = DefaultPort
 		conf.SwaggerBasePath = DefaultSwaggerBasepath
 		ini.ReflectFrom(iniFile, conf)

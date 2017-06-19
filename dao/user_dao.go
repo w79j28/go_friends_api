@@ -1,27 +1,30 @@
-// dao
 package dao
 
 import (
 	"container/list"
 
 	"github.com/w79j28/go_friends_api/entity"
-	. "github.com/xormplus/xorm"
+	"github.com/xormplus/xorm"
 )
 
+// UserDaoImpl userDao struct
 type UserDaoImpl struct{}
 
+//Add add
 func (u *UserDaoImpl) Add(user *entity.User) int64 {
 	_, err := engine.Insert(user)
 	CheckError(err)
 	return user.Id
 }
 
-func (u *UserDaoImpl) AddBySession(session *Session, user *entity.User) int64 {
+// AddBySession addBySession
+func (u *UserDaoImpl) AddBySession(session *xorm.Session, user *entity.User) int64 {
 	_, err := session.Insert(user)
 	CheckError(err)
 	return user.Id
 }
 
+// QueryByEmail queryByEmail
 func (u *UserDaoImpl) QueryByEmail(email string) *entity.User {
 	user := new(entity.User)
 
@@ -29,12 +32,12 @@ func (u *UserDaoImpl) QueryByEmail(email string) *entity.User {
 	//CheckError(err)
 	if rs {
 		return user
-	} else {
-		return nil
 	}
+	return nil
 
 }
 
+// Query query
 func (u *UserDaoImpl) Query() []*entity.User {
 	list := list.New()
 	user := new(entity.User)
@@ -48,18 +51,18 @@ func (u *UserDaoImpl) Query() []*entity.User {
 
 	}
 
-	var users []*entity.User = make([]*entity.User, list.Len())
+	var users = make([]*entity.User, list.Len())
 
 	i := 0
 	for e := list.Front(); e != nil; e = e.Next() {
-		var uu *entity.User = e.Value.(*entity.User)
-
+		var uu = e.Value.(*entity.User)
 		users[i] = uu
 		i++
 	}
 	return users
 }
 
+// Update update
 func (u *UserDaoImpl) Update(user *entity.User) int64 {
 	//.
 	affected, err := engine.Id(user.Id).Update(user)
@@ -67,6 +70,7 @@ func (u *UserDaoImpl) Update(user *entity.User) int64 {
 	return affected
 }
 
+// Delete delete
 func (u *UserDaoImpl) Delete(uid int64) int64 {
 
 	user := new(entity.User)
