@@ -23,7 +23,7 @@ Updates" etc.
 ```java
   #数据库连接
   dburl            = postgres://user:password@ip:port/dbname?sslmode=disable
-  #端口
+  #端口 predix时为cloud
   port             = port
   #Swagger Basepath
   swagger_basepath = http://ip:port
