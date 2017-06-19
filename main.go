@@ -10,19 +10,19 @@ package main
 
 import (
 	"fmt"
-	"strings"
 	"net/http"
+	"strings"
 
 	"github.com/w79j28/go_friends_api/conf"
 	. "github.com/w79j28/go_friends_api/service/user"
 
-	. "github.com/w79j28/go_friends_api/swagger.docs"
+	"os"
 
 	"github.com/gin-gonic/gin"
+	. "github.com/w79j28/go_friends_api/swagger.docs"
 )
 
 func main() {
-
 	gin.SetMode(gin.DebugMode)
 	router := gin.Default()
 	router.Use(func(c *gin.Context) {
@@ -44,8 +44,11 @@ func main() {
 
 	//
 	InitSwagger(router)
-	router.Run(":" + conf.AppConf.Port)
-
+	if conf.AppConf.Port == "cloud" {
+		router.Run(":" + os.Getenv("PORT"))
+	} else {
+		router.Run(":" + conf.AppConf.Port)
+	}
 }
 
 func corsHandler(c *gin.Context) {
