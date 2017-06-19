@@ -1,4 +1,7 @@
 
+## 在线访问地址
+  [Friends Management](https://gofriendsapi-test.run.aws-jp01-pr.ice.predix.io/swagger-ui/)
+
 ## 开发框架说明
 * Go、[gin](https://github.com/gin-gonic/gin)、[xorm](http://www.xorm.io)、[SwaggerUI](https://w79j28.github.io/go_friends_api)
 * PostgreSql
@@ -32,7 +35,7 @@ Updates" etc.
 
 ## API说明
 
-[https://w79j28.github.io/go_friends_api/](https://w79j28.github.io/go_friends_api/#!/user.json)
+[https://gofriendsapi-test.run.aws-jp01-pr.ice.predix.io/swagger-ui/](https://gofriendsapi-test.run.aws-jp01-pr.ice.predix.io/swagger-ui/#!/user.json)
 
 #### 1 /user/friends    [`POST`] 
 
