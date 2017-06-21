@@ -3,7 +3,7 @@
 // @APIDescription Swagger Friends Management API
 // @BasePath {{basePath}}
 // @Contact jingzhu.wang@chinasofti.com
-// @TermsOfServiceUrl http://www.chinasofit.com
+// @TermsOfServiceUrl http://www.chinasofti.com
 // @License None
 // @LicenseUrl #
 package main
