@@ -172,4 +172,3 @@ That "subscribing to updates" is NOT equivalent to "adding a friend connection".
      ]
   }
 ```  
-* Demo.
